@@ -1,0 +1,13 @@
+{
+    "name": "audio-room-app",
+    "version": "1.0.0",
+    "description": "Test audio room application",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "repository": "https://github.com/AntonyEg/audio-room-app",
+    "devDependencies": {
+        "electron": "^20.0.1"
+    }
+}
