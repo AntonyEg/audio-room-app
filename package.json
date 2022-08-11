@@ -4,7 +4,7 @@
   "description": "Test audio room application",
   "main": "main.js",
   "scripts": {
-    "start": "PORT=3006 electron-forge start",
+    "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
@@ -20,7 +20,8 @@
     "electron": "^20.0.1"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "mysql": "^2.18.1"
   },
   "config": {
     "forge": {

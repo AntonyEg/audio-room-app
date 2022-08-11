@@ -1,15 +1,23 @@
-// All of the Node.js APIs are available in the preload process.
-// It has the same sandbox as a Chrome extension.
-window.addEventListener('DOMContentLoaded', () => {
-    const replaceText = (selector, text) => {
-      const element = document.getElementById(selector)
-      if (element) element.innerText = text
-    }
-  
-    for (const type of ['chrome', 'node', 'electron']) {
-      replaceText(`${type}-version`, process.versions[type])
-    }
-    console.log('preload');
-    console.log('process', process);
-  })
-  
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electron', {
+  createUser: async (username) => {
+    return await ipcRenderer.invoke('createUser', username); 
+  },
+  doLogin: async (username) => {
+    return await ipcRenderer.invoke('doLogin', username); 
+  },
+  doLogout: async (username) => {
+    return await ipcRenderer.invoke('doLogout', username); 
+  },
+  createRoom: async (roomName) => {
+    return await ipcRenderer.invoke('createRoom', roomName);
+  },
+  getRooms: async () => {
+    return await ipcRenderer.invoke('getRooms');
+  },
+  checkRoomExists: async () => {
+    return await ipcRenderer.invoke('checkRoomExists');
+  },
+  handleRoomEvent: (callback) => ipcRenderer.on('room', callback),
+});

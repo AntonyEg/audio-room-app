@@ -106,6 +106,10 @@ pre {
 	word-wrap: break-word;
 }
 
+.list-group-item {
+	cursor: pointer;
+}
+
 .januscon {
 	font-weight: bold;
 	animation: pulsating 1s infinite;
